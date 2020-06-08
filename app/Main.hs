@@ -12,13 +12,14 @@ import Lang
 main :: IO () 
 main = do {
 		args <- getArgs :: IO [String];
-		let cnt = length args:: Int;
-		in if(2 == cnt) then 
-			putStrLn (parse args);
-			{- todo: exit success -}
-			else
-			putStrLn (Lang.translate WrongArgs LangRu);
-			{- todo: exit fail wrong args  -}
+
+		
+		putStrLn "test text2";
+
+		case length args of
+			1 ->	putStrLn (Lang.translate GoodArgs LangEn);
+			2 ->	putStrLn (Lang.translate GoodArgs LangEn);
+			_ ->	putStrLn (Lang.translate WrongArgs LangEn);
 }
 
 {-
