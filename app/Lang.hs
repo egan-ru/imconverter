@@ -1,18 +1,26 @@
 module Lang(
 {-
  - translate friendly name into string
- - param name	- friendly name
- - return	- localizated string
+ - @param name	- friendly name
+ - @param lang	- lang name
+ - @return	- localizated string
  -}
 	translate,
 
 {- contain friendly names of common phrases -}
-	TextData(..)
+	TextData(..),
+	LangName(..)
 
 )where
 
 import Lib
 import Data.Map.Strict
+
+{- contain friendly names of langs -}
+data LangName = 
+	LangRu		|{- todo -}
+	LangEn		{- todo -}
+	deriving (Eq, Enum, Ord)
 
 {- contain friendly names of common phrases -}
 data TextData = 
@@ -36,12 +44,17 @@ textEn = fromList [
 		(Help, "Help Text En")
 		] :: Map TextData [Char]
 
+{- container for texts -}
+textAll = fromList[
+		(LangEn, textEn),
+		(LangRu, textRu)
+		]
 {-
  - translate friendly name into string
- - param name	- friendly name
- - return	- localizated string
+ - @param name	- text friendly name
+ - @param lang	- lang name
+ - @return	- localizated string
  -}
-translate :: TextData -> [Char]
-translate name = textEn ! name;
-
+translate :: TextData-> LangName -> [Char]
+translate name lang = (textAll ! lang) ! name;
 

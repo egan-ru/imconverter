@@ -17,7 +17,7 @@ main = do {
 			putStrLn (parse args);
 			{- todo: exit success -}
 			else
-			putStrLn (Lang.translate WrongArgs);
+			putStrLn (Lang.translate WrongArgs LangRu);
 			{- todo: exit fail wrong args  -}
 }
 
