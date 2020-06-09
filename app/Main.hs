@@ -13,26 +13,40 @@ main :: IO ()
 main = do {
 		args <- getArgs :: IO [String];
 
-		
-		putStrLn "test text2";
+		let
+			maybeFilenames = proceedArgs args;
+			wrongArgsInfo = putStrLn(Lang.translate WrongArgs LangEn);
+		in maybe wrongArgsInfo debugFunc maybeFilenames;
 
+		{-fmap debugFunc (proceedArgs args) -}
+{-
 		case length args of
 			1 ->	putStrLn (Lang.translate GoodArgs LangEn);
 			2 ->	putStrLn (Lang.translate GoodArgs LangEn);
 			_ ->	putStrLn (Lang.translate WrongArgs LangEn);
+-}			
+
+
 }
 
-{-
- - get command line args and fill string with
- - special format:
- - 1arg= %first_arg, 2arg= %second_arg
- - 
- - @param args		- input array of strings
- - @return		- formatted out  
--}
-parse :: [String] -> String
-parse args = let {
-	str1 = args !! 0 :: String;
-	str2 = args !! 1 :: String;
-	result = "1arg= "++ str1  ++ ", 2arg= " ++ str2:: String;
-} in result
+{- proceed args,
+ - to make possible word with files
+ - @param count		- arg count
+ - @param lang		- lang to print message
+ -
+ - @return		- todo: IO
+ -}
+proceedArgs :: [String] -> Maybe (String, String)
+{- two valid args -}
+proceedArgs [infile, outfile] = Just (infile, outfile);	
+{- one valid arg -}					
+proceedArgs [infile] = Just (infile, infile); 
+{- wrong arg count -}
+proceedArgs _ =	Nothing;
+
+{- debuf function
+ - @param	- todo
+ - @return	- todo
+ - -}
+debugFunc :: (String, String) -> IO ()
+debugFunc (infile, outfile) = putStrLn (infile ++ " " ++ outfile);
