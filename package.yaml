@@ -24,6 +24,7 @@ dependencies:
 - optparse-applicative >= 0.14.2
 #- unordered-containers >= 0.2.10.0
 - containers
+- split
 
 library:
   source-dirs: src

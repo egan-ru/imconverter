@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4cbe41dec3329a1638d0249abb7596a029c9dc7933c0266981e7164b513aff45
+-- hash: 8e7d92b3ac2b3c171b7f39ee7fb96a2499658612056d066415e48c40b7fa55c8
 
 name:           imconverter
 version:        0.1.0.0
@@ -36,6 +36,7 @@ library
       base >=4.7 && <5
     , containers
     , optparse-applicative >=0.14.2
+    , split
   default-language: Haskell2010
 
 executable imconverter-exe
@@ -51,6 +52,7 @@ executable imconverter-exe
     , containers
     , imconverter
     , optparse-applicative >=0.14.2
+    , split
   default-language: Haskell2010
 
 test-suite imconverter-test
@@ -66,4 +68,5 @@ test-suite imconverter-test
     , containers
     , imconverter
     , optparse-applicative >=0.14.2
+    , split
   default-language: Haskell2010

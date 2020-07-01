@@ -1,5 +1,6 @@
 module Lang(
 {-
+ -
  - translate friendly name into string
  - @param name	- friendly name
  - @param lang	- lang name
